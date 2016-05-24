@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="./lib/jquery.min.js"></script>
+  <link rel="stylesheet" href="./lib/bootstrap.min.css">
+
+  <!-- CODE MIRROR DEPs-->
+  <script src="./lib/codemirror.js"></script>
+  <link rel="stylesheet" href="./lib/codemirror.css">
+  <script src="./mode/javascript/javascript.js"></script>
+  <style type="text/css">.CodeMirror {border: 1px solid black;}</style>
+
+  <!-- THEMES
+      we should load styles for the choosen theme.
+   -->
+  <link rel="stylesheet" href="./themes/3024-day.css">
+  <link rel="stylesheet" href="./themes/abcdef.css">
+  <link rel="stylesheet" href="./themes/3024-day.css">
+  <link rel="stylesheet" href="./themes/3024-night.css">
+  <link rel="stylesheet" href="./themes/ambiance.css">
+  <link rel="stylesheet" href="./themes/abcdef.css">
+  <link rel="stylesheet" href="./themes/ambiance-mobile.css">
+  <link rel="stylesheet" href="./themes/base16-dark.css">
+  <link rel="stylesheet" href="./themes/base16-light.css">
+  <link rel="stylesheet" href="./themes/bespin.css">
+  <link rel="stylesheet" href="./themes/blackboard.css">
+  <link rel="stylesheet" href="./themes/cobalt.css">
+  <link rel="stylesheet" href="./themes/colorforth.css">
+  <link rel="stylesheet" href="./themes/eclipse.css">
+  <link rel="stylesheet" href="./themes/dracula.css">
+  <link rel="stylesheet" href="./themes/elegant.css">
+  <link rel="stylesheet" href="./themes/erlang-dark.css">
+  <link rel="stylesheet" href="./themes/hopscotch.css">
+  <link rel="stylesheet" href="./themes/icecoder.css">
+  <link rel="stylesheet" href="./themes/isotope.css">
+  <link rel="stylesheet" href="./themes/lesser-dark.css">
+  <link rel="stylesheet" href="./themes/liquibyte.css">
+  <link rel="stylesheet" href="./themes/material.css">
+  <link rel="stylesheet" href="./themes/mdn-like.css">
+  <link rel="stylesheet" href="./themes/mbo.css">
+  <link rel="stylesheet" href="./themes/midnight.css">
+  <link rel="stylesheet" href="./themes/neat.css">
+  <link rel="stylesheet" href="./themes/neo.css">
+  <link rel="stylesheet" href="./themes/monokai.css">
+  <link rel="stylesheet" href="./themes/night.css">
+  <link rel="stylesheet" href="./themes/pastel-on-dark.css">
+  <link rel="stylesheet" href="./themes/paraiso-dark.css">
+  <link rel="stylesheet" href="./themes/railscasts.css">
+  <link rel="stylesheet" href="./themes/railscasts.css">
+  <link rel="stylesheet" href="./themes/rubyblue.css">
+  <link rel="stylesheet" href="./themes/seti.css">
+  <link rel="stylesheet" href="./themes/railscasts.css">
+  <link rel="stylesheet" href="./themes/solarized.css">
+  <link rel="stylesheet" href="./themes/the-matrix.css">
+  <link rel="stylesheet" href="./themes/tomorrow-night-bright.css">
+  <link rel="stylesheet" href="./themes/solarized.css">
+  <link rel="stylesheet" href="./themes/tomorrow-night-eighties.css">
+  <link rel="stylesheet" href="./themes/ttcn.css">
+  <link rel="stylesheet" href="./themes/twilight.css">
+  <link rel="stylesheet" href="./themes/vibrant-ink.css">
+  <link rel="stylesheet" href="./themes/xq-dark.css">
+  <link rel="stylesheet" href="./themes/xq-light.css">
+  <link rel="stylesheet" href="./themes/yeti.css">
+  <link rel="stylesheet" href="./themes/zenburn.css">
+
+  <script src='./editor.js'></script>
+</head>
+<body>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="position: center;">
+          <h3> Editor Demonstration: </h3>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6" style="position: center;">
+        Select Theme:
+        <select id="theme_selector" onchange="changeTheme(this.value);">
+          <option value="default">Default</option>
+          <option value="3024-day">3024-day</option>
+          <option value="3024-night">3024-night</option>
+          <option value="abcdef">abcdef</option>
+          <option value="ambiance">ambiance</option>
+          <option value="ambiance-mobile">ambiance-mobile</option>
+          <option value="base16-dark">base16-dark</option>
+          <option value="base16-light">base16-light</option>
+          <option value="bespin">bespin</option>
+          <option value="blackboard">blackboard</option>
+          <option value="cobalt">cobalt</option>
+          <option value="colorforth">colorforth</option>
+          <option value="dracula">dracula</option>
+          <option value="eclipse">eclipse</option>
+          <option value="elegant">elegant</option>
+          <option value="erlang-dark">erlang-dark</option>
+          <option value="hopscotch">hopscotch</option>
+          <option value="icecoder">icecoder</option>
+          <option value="isotope">isotope</option>
+          <option value="lesser-dark">lesser-dark</option>
+          <option value="liquibyte">liquibyte</option>
+          <option value="material">material</option>
+          <option value="mbo">mbo</option>
+          <option value="mdn-like">mdn-like</option>
+          <option value="midnight">midnight</option>
+          <option value="monokai">monokai</option>
+          <option value="neat">neat</option>
+          <option value="neo">neo</option>
+          <option value="night">night</option>
+          <option value="paraiso-dark">paraiso-dark</option>
+          <option value="pastel-on-dark">pastel-on-dark</option>
+          <option value="railscasts">railscasts</option>
+          <option value="rubyblue">rubyblue</option>
+          <option value="railscasts">railscasts</option>
+          <option value="seti">seti</option>
+          <option value="railscasts">railscasts</option>
+          <option value="solarized">solarized</option>
+          <option value="the-matrix">the-matrix</option>
+          <option value="solarized">solarized</option>
+          <option value="tomorrow-night-bright">tomorrow-night-bright</option>
+          <option value="tomorrow-night-eighties">tomorrow-night-eighties</option>
+          <option value="ttcn">ttcn</option>
+          <option value="twilight">twilight</option>
+          <option value="vibrant-ink">vibrant-ink</option>
+          <option value="xq-dark">xq-dark</option>
+          <option value="xq-light">xq-light</option>
+          <option value="yeti">yeti</option>
+          <option value="zenburn">zenburn</option>
+        </select>
+    </div>
+  </div>
+
+  <div class="row" style="padding-top : 30px;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+        <!-- ###### CODE MIRROR GOES HERE, YAY! -->
+        <form style = "position: center; border: dash 1px;" >
+              <textarea id="editor"></textarea>
+        </form>
+
+        <!-- ################################## -->
+    </div>
+    <div class="col-md-3"></div>
+   </div>
+
+  <div class="row" style="margin-top: 10px;">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <button type="button" class="btn btn-default" onclick="evaluateThis()">Evaluate!</button>
+    </div>
+  </div>
+</body>
+</html>
