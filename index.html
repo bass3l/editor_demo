@@ -1,15 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <script src="./lib/jquery.min.js"></script>
   <link rel="stylesheet" href="./lib/bootstrap.min.css">
+
+
+  <link rel="stylesheet" href="./styles.css">
 
   <!-- CODE MIRROR DEPs-->
   <script src="./lib/codemirror.js"></script>
   <link rel="stylesheet" href="./lib/codemirror.css">
+  <!--<link rel="stylesheet" href="./lib/solemirror.css">-->
+  <script src="./mode/xml/xml.js"></script>
+  <script src="./mode/css/css.js"></script>
   <script src="./mode/javascript/javascript.js"></script>
-  <style type="text/css">.CodeMirror {border: 1px solid black;}</style>
-
+  <script src="./mode/htmlmixed/htmlmixed.js"></script>
+  <script src="./mode/sass/sass.js"></script>
+  <style type="text/css">
+      .CodeMirror {border: 1px solid black;}
+      .CodeMirror-lines {padding-top:5px;}
+  </style>
+  <!--SOLEMIRROR
+  <script src="./lib/solemirror.js"></script>
+   -->
   <!-- THEMES
       we should load styles for the choosen theme.
    -->
@@ -131,6 +145,21 @@
     </div>
   </div>
 
+  <div class="row" style="padding-top :20px;">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+          Select Mode:
+          <select id="mode_selector" onchange="changeMode(this.value);" style="margin-left:10px;">
+            <option value="js_console">JS Console</option>
+            <option value="js_editor">JS Editor</option>
+            <option value="html_editor">HTML Editor Full</option>
+            <option value="html_editor_locked">HTML Editor Locked</option>
+            <option value="html_editor_plocked">HTML Editor Partially</option>
+            <option value="css_editor">CSS Editor</option>
+            <option value="sass_editor">SASS Editor</option>
+          </select>
+      </div>
+  </div>
   <div class="row" style="padding-top : 30px;">
     <div class="col-md-3"></div>
     <div class="col-md-6">
@@ -149,6 +178,7 @@
     <div class="col-md-3"></div>
     <div class="col-md-6">
       <button type="button" class="btn btn-default" onclick="evaluateThis()">Evaluate!</button>
+      <button type="button" class="btn btn-default" onclick="printMessage()">Print Message</button>
     </div>
   </div>
 </body>
